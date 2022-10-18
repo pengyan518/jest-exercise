@@ -21,20 +21,21 @@ const dogImagesResponse = {
     'https://images.dog.ceo/breeds/cattledog-australian/IMG_5177.jpg',
   ],
 }
+// jest.mock('axios')
 beforeEach(() => {
+
   // jest.spyOn(window, 'fetch').mockImplementation(mockFetch)
-  // return jest.fn().mockImplementation(mockFetch)
 
-  // jest.mock('fetch')
-  // jest.fn().mockImplementation(mockFetch)
-  // const users = [{name: 'Bob'}];
-  //   const resp = {data: users};
-  //   fetch.get.mockResolvedValue(resp)
+  // const resp = {data: breedsListResponse}
+  // const resp2 = {data: dogImagesResponse}
+  // axios.get.mockResolvedValue(resp)
+  // axios.get.mockResolvedValue(resp2)
+
   var mock = new MockAdapter(axios)
-
   mock.onGet('https://dog.ceo/api/breeds/list/all').reply(200, breedsListResponse)
   mock.onGet('https://dog.ceo/api/breed/cattledog/images').reply(200, dogImagesResponse)
 })
+
 
 afterEach(() => {
   jest.restoreAllMocks()
